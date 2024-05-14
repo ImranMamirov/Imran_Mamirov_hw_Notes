@@ -1,10 +1,8 @@
-package com.example.imran_mamirov_hw_notes
+package com.example.imran_mamirov_hw_notes.noteApp.activity
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.imran_mamirov_hw_notes.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

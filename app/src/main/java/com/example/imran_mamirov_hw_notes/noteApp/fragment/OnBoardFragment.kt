@@ -1,4 +1,4 @@
-package com.example.imran_mamirov_hw_notes
+package com.example.imran_mamirov_hw_notes.noteApp.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.example.imran_mamirov_hw_notes.noteApp.adapter.OnBoardViewPagerAdapter
+import com.example.imran_mamirov_hw_notes.R
 import com.example.imran_mamirov_hw_notes.databinding.FragmentOnBoardBinding
 
 class OnBoardFragment : Fragment() {

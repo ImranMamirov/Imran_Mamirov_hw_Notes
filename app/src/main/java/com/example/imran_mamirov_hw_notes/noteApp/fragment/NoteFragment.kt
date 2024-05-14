@@ -1,10 +1,11 @@
-package com.example.imran_mamirov_hw_notes
+package com.example.imran_mamirov_hw_notes.noteApp.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.imran_mamirov_hw_notes.R
 
 class NoteFragment : Fragment() {
 

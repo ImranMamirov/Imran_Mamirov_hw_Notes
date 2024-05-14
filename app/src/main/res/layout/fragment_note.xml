@@ -4,12 +4,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".noteApp.fragment.NoteFragment">
+    tools:context=".noteApp.ui.fragment.note.NoteFragment">
 
-    <ImageView
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_black"
+        android:paddingTop="12dp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/error_img"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center|top"
+        android:layout_marginTop="17dp"
+        android:text="@string/notes"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/baseline_dehaze_24"
+        android:backgroundTint="@color/gray"
+        android:padding="16dp" />
+
+    <ImageView
+        android:id="@+id/dashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/baseline_dashboard_24"
+        android:backgroundTint="@color/gray"
+        android:padding="16dp" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/baseline_add_circle_24"
+        android:backgroundTint="@color/orange" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/style"
+        android:hint="@string/Search_for_notes"
+        android:paddingVertical="12dp"
+        android:textColorHint="@color/dark_gray" />
 
 </FrameLayout>

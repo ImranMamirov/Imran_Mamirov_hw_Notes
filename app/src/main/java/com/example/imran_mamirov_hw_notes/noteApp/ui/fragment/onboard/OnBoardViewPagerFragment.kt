@@ -1,4 +1,4 @@
-package com.example.imran_mamirov_hw_notes.noteApp.fragment
+package com.example.imran_mamirov_hw_notes.noteApp.ui.fragment.onboard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

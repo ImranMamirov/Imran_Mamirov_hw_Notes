@@ -61,6 +61,7 @@
         android:background="@drawable/style"
         android:hint="@string/Search_for_notes"
         android:paddingVertical="12dp"
+        android:textColor="@color/white"
         android:textColorHint="@color/dark_gray" />
 
 </FrameLayout>

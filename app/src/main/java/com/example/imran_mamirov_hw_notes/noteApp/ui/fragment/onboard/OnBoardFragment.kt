@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.imran_mamirov_hw_notes.noteApp.ui.adapter.OnBoardViewPagerAdapter
 import com.example.imran_mamirov_hw_notes.R
 import com.example.imran_mamirov_hw_notes.databinding.FragmentOnBoardBinding
+import com.example.imran_mamirov_hw_notes.noteApp.utils.SharedPreferenceHelper
 
 class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
@@ -25,10 +26,15 @@ class OnBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setUpListener()
+        binding.tvStart.setOnClickListener {
+            SharedPreferenceHelper.onShowed()
+            findNavController().navigate(R.id.noteFragment)
+        }
     }
 
     private fun initialize() {
         binding.viewPager2.adapter = OnBoardViewPagerAdapter(this@OnBoardFragment)
+        SharedPreferenceHelper.init(requireContext())
     }
 
     private fun setUpListener() = with(binding.viewPager2) {
@@ -56,5 +62,9 @@ class OnBoardFragment : Fragment() {
         binding.tvStart.setOnClickListener {
             findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment3)
         }
+    }
+
+    private fun flag() {
+        SharedPreferenceHelper.isOnBoardShown = true
     }
 }

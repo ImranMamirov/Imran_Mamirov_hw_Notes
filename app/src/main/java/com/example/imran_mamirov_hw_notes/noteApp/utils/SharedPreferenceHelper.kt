@@ -3,7 +3,7 @@ package com.example.imran_mamirov_hw_notes.noteApp.utils
 import android.content.Context
 import android.content.SharedPreferences
 
-class SharedPreferenceHelper {
+object SharedPreferenceHelper {
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -19,15 +19,14 @@ class SharedPreferenceHelper {
         return sharedPreferences.getBoolean(SHOWED, true)
     }
 
-    companion object {
-        const val SHOWED = "SHOWED"
-    }
+    private const val SHOWED = "SHOWED"
+
+    var isOnBoardShown: Boolean
+        get() = sharedPreferences.getBoolean("board", false)
+        set(value) = sharedPreferences.edit().putBoolean("board", value).apply()
 
 //    var title: String?
 //        get() = sharedPreferences.getString("title", "")
 //        set(value) = sharedPreferences.edit().putString("title", value).apply()
 
-//    var isOnBoardShown: Boolean
-//        get() = sharedPreferences.getBoolean("board", false)
-//        set(value) = sharedPreferences.edit().putBoolean("board", value).apply()
 }

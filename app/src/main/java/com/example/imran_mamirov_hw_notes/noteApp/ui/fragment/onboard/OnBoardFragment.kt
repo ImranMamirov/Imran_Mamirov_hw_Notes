@@ -26,15 +26,10 @@ class OnBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setUpListener()
-        binding.tvStart.setOnClickListener {
-            SharedPreferenceHelper.onShowed()
-            findNavController().navigate(R.id.noteFragment)
-        }
     }
 
     private fun initialize() {
         binding.viewPager2.adapter = OnBoardViewPagerAdapter(this@OnBoardFragment)
-        SharedPreferenceHelper.init(requireContext())
     }
 
     private fun setUpListener() = with(binding.viewPager2) {
@@ -59,12 +54,9 @@ class OnBoardFragment : Fragment() {
                 setCurrentItem(currentItem + 2, true)
             }
         }
-        binding.tvStart.setOnClickListener {
-            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment3)
-        }
-    }
 
-    private fun flag() {
-        SharedPreferenceHelper.isOnBoardShown = true
+        binding.tvStart.setOnClickListener {
+            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
+        }
     }
 }

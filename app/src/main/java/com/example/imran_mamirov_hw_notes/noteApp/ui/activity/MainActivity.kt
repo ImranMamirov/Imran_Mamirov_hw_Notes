@@ -11,8 +11,8 @@ import com.example.imran_mamirov_hw_notes.noteApp.utils.SharedPreferenceHelper
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var sharedPreferenceHelper: SharedPreferenceHelper
 
-    //    private lateinit var sharedPreferenceHelper: SharedPreferenceHelper
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +24,10 @@ class MainActivity : AppCompatActivity() {
 
         navController = navHostFragment.navController
 
-//        sharedPreferenceHelper = SharedPreferenceHelper()
-//        sharedPreferenceHelper.init(this@MainActivity)
+        sharedPreferenceHelper = SharedPreferenceHelper(this@MainActivity)
 
-        if (!SharedPreferenceHelper.isShowed()) {
-            navController.navigate(R.id.onBoardFragment)
-            SharedPreferenceHelper.isOnBoardShown = false
+        if (!sharedPreferenceHelper.isOnBoardingComplete()) {
+            sharedPreferenceHelper.setOnBoardingComplete(true)
         } else {
             navController.navigate(R.id.noteFragment)
         }

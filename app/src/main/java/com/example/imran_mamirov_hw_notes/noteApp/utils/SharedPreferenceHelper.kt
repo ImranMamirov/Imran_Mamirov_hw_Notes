@@ -3,30 +3,22 @@ package com.example.imran_mamirov_hw_notes.noteApp.utils
 import android.content.Context
 import android.content.SharedPreferences
 
-object SharedPreferenceHelper {
+class SharedPreferenceHelper(context: Context) {
 
-    private lateinit var sharedPreferences: SharedPreferences
+    private val sharedPreferences: SharedPreferences = context.getSharedPreferences(
+        "shared",
+        Context.MODE_PRIVATE
+    )
 
-    fun init(context: Context) {
-        sharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
+    fun setOnBoardingComplete(isComplete: Boolean) {
+        sharedPreferences.edit().putBoolean(SHOWED, isComplete).apply()
     }
 
-    fun onShowed() {
-        sharedPreferences.edit().putBoolean(SHOWED, false).apply()
+    fun isOnBoardingComplete(): Boolean {
+        return sharedPreferences.getBoolean(SHOWED, false)
     }
 
-    fun isShowed(): Boolean {
-        return sharedPreferences.getBoolean(SHOWED, true)
+    companion object{
+        const val SHOWED = "SHOWED"
     }
-
-    private const val SHOWED = "SHOWED"
-
-    var isOnBoardShown: Boolean
-        get() = sharedPreferences.getBoolean("board", false)
-        set(value) = sharedPreferences.edit().putBoolean("board", value).apply()
-
-//    var title: String?
-//        get() = sharedPreferences.getString("title", "")
-//        set(value) = sharedPreferences.edit().putString("title", value).apply()
-
 }

@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.imran_mamirov_hw_notes.R
 import com.example.imran_mamirov_hw_notes.databinding.FragmentNoteBinding
+import com.example.imran_mamirov_hw_notes.noteApp.App
 import com.example.imran_mamirov_hw_notes.noteApp.data.extension.getBackStackData
 import com.example.imran_mamirov_hw_notes.noteApp.data.models.NoteModel
 import com.example.imran_mamirov_hw_notes.noteApp.ui.adapter.NoteAdapter
@@ -17,7 +18,7 @@ class NoteFragment : Fragment() {
 
     private lateinit var binding: FragmentNoteBinding
     private lateinit var noteAdapter: NoteAdapter
-    private var list: ArrayList<NoteModel> = ArrayList()
+//    private var list: ArrayList<NoteModel> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,10 +50,14 @@ class NoteFragment : Fragment() {
     }
 
     private fun getData() {
-        getBackStackData<String>("key") { data ->
-            val noteModel = NoteModel(data)
-            list.add(noteModel)
-            noteAdapter.submitList(list)
+        App().getInstance()?.noteDao()?.getAll()?.observe(viewLifecycleOwner){
+            noteAdapter.submitList(it)
         }
+
+//        getBackStackData<String>("key") { data ->
+//            val noteModel = NoteModel(data)
+//            list.add(noteModel)
+//            noteAdapter.submitList(list)
+//        }
     }
 }

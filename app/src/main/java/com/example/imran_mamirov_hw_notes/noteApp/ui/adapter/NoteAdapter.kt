@@ -2,16 +2,28 @@ package com.example.imran_mamirov_hw_notes.noteApp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.imran_mamirov_hw_notes.R
 import com.example.imran_mamirov_hw_notes.databinding.ItemNoteBinding
 import com.example.imran_mamirov_hw_notes.noteApp.data.models.NoteModel
 
 class NoteAdapter :
     androidx.recyclerview.widget.ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback()) {
+
     class ViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: NoteModel) {
-            binding.itemTv.text = item.title
+            binding.itemTitle.text = item.title
+            binding.itemDescription.text = item.description
+            binding.itemDate.text = item.date
+            binding.itemTime.text = item.time
+
+            // Получаем контекст из корневого элемента binding
+            val context = binding.root.context
+            // Устанавливаем фон для заметки
+            val drawable = ContextCompat.getDrawable(context, item.color.toInt())
+            binding.itemNote.background = drawable
         }
     }
 
@@ -30,7 +42,7 @@ class NoteAdapter :
         }
 
         override fun areContentsTheSame(oldItem: NoteModel, newItem: NoteModel): Boolean {
-            return oldItem.title == newItem.title
+            return oldItem.id == newItem.id
         }
     }
 }

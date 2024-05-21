@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.imran_mamirov_hw_notes.R
 import com.example.imran_mamirov_hw_notes.databinding.ItemNoteBinding
+import com.example.imran_mamirov_hw_notes.noteApp.Interface.OnClickItem
 import com.example.imran_mamirov_hw_notes.noteApp.data.models.NoteModel
 
-class NoteAdapter :
+class NoteAdapter(private val onLongClick: OnClickItem, private val onClick: OnClickItem) :
     androidx.recyclerview.widget.ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback()) {
 
     class ViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -19,9 +19,7 @@ class NoteAdapter :
             binding.itemDate.text = item.date
             binding.itemTime.text = item.time
 
-            // Получаем контекст из корневого элемента binding
             val context = binding.root.context
-            // Устанавливаем фон для заметки
             val drawable = ContextCompat.getDrawable(context, item.color.toInt())
             binding.itemNote.background = drawable
         }
@@ -34,6 +32,15 @@ class NoteAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+
+        holder.itemView.setOnLongClickListener {
+            onLongClick.onLongClick(getItem(position))
+            true
+        }
+
+        holder.itemView.setOnClickListener {
+            onClick.onClick(getItem(position))
+        }
     }
 
     class DiffCallback : DiffUtil.ItemCallback<NoteModel>() {

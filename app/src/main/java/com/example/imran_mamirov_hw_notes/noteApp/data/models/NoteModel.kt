@@ -1,6 +1,5 @@
 package com.example.imran_mamirov_hw_notes.noteApp.data.models
 
-import android.graphics.drawable.Drawable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

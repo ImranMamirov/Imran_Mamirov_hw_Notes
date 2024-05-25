@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "124288001930",
+    "project_id": "noteapp-4a6cd",
+    "storage_bucket": "noteapp-4a6cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124288001930:android:4a7636709852780b9d4a73",
+        "android_client_info": {
+          "package_name": "com.example.imran_mamirov_hw_notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUxRKjPylTdBQNVYxiTrwlVslgOPmAgFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

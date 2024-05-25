@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferenceHelper = SharedPreferenceHelper(this@MainActivity)
 
-        if (!sharedPreferenceHelper.isOnBoardingComplete()) {
-            sharedPreferenceHelper.setOnBoardingComplete(true)
-        } else {
-            navController.navigate(R.id.noteFragment)
-        }
+//        if (!sharedPreferenceHelper.isOnBoardingComplete()) {
+//            sharedPreferenceHelper.setOnBoardingComplete(true)
+//        } else {
+//            navController.navigate(R.id.noteFragment)
+//        }
     }
 }

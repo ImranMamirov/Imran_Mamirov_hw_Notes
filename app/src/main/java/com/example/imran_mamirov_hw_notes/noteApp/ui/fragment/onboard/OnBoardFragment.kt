@@ -14,6 +14,7 @@ import com.example.imran_mamirov_hw_notes.noteApp.utils.SharedPreferenceHelper
 
 class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
+    private lateinit var sharedPreferenceHelper: SharedPreferenceHelper
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,6 +27,12 @@ class OnBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setUpListener()
+
+        if (!sharedPreferenceHelper.isOnBoardingComplete()) {
+            sharedPreferenceHelper.setOnBoardingComplete(true)
+        } else {
+            findNavController().navigate(R.id.singUpFragment)
+        }
     }
 
     private fun initialize() {
@@ -56,7 +63,7 @@ class OnBoardFragment : Fragment() {
         }
 
         binding.tvStart.setOnClickListener {
-            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
+            findNavController().navigate(R.id.action_onBoardFragment_to_singUpFragment)
         }
     }
 }

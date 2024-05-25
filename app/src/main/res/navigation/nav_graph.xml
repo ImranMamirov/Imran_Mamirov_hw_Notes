@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_onBoardFragment_to_noteFragment"
             app:destination="@id/noteFragment" />
+        <action
+            android:id="@+id/action_onBoardFragment_to_singUpFragment"
+            app:destination="@id/singUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/onBoardViewPagerFragment"
@@ -40,4 +43,9 @@
             android:name="noteId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/singUpFragment"
+        android:name="com.example.imran_mamirov_hw_notes.noteApp.ui.fragment.singup.SingUpFragment"
+        android:label="fragment_sing_up"
+        tools:layout="@layout/fragment_sing_up" />
 </navigation>

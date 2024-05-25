@@ -26,8 +26,17 @@ class SharedPreferenceHelper(context: Context) {
         return sharedPreferences.getBoolean(IS_GRID_LAYOUT, false)
     }
 
+    fun setSignInComplete(isComplete: Boolean) {
+        sharedPreferences.edit().putBoolean(SIGN_IN_COMPLETE, isComplete).apply()
+    }
+
+    fun isSignInComplete(): Boolean {
+        return sharedPreferences.getBoolean(SIGN_IN_COMPLETE, false)
+    }
+
     companion object{
         const val SHOWED = "SHOWED"
         const val IS_GRID_LAYOUT = "IS_GRID_LAYOUT"
+        const val SIGN_IN_COMPLETE = "SIGN_IN_COMPLETE"
     }
 }

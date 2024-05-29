@@ -28,11 +28,11 @@ class OnBoardFragment : Fragment() {
         initialize()
         setUpListener()
 
-        if (!sharedPreferenceHelper.isOnBoardingComplete()) {
-            sharedPreferenceHelper.setOnBoardingComplete(true)
-        } else {
-            findNavController().navigate(R.id.singUpFragment)
-        }
+//        if (!sharedPreferenceHelper.isOnBoardingComplete()) {
+//            sharedPreferenceHelper.setOnBoardingComplete(true)
+//        } else {
+//            findNavController().navigate(R.id.singUpFragment)
+//        }
     }
 
     private fun initialize() {

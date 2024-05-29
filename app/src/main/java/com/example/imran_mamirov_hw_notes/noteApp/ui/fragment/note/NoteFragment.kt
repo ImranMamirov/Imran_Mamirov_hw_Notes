@@ -1,11 +1,11 @@
 package com.example.imran_mamirov_hw_notes.noteApp.ui.fragment.note
 
 import android.app.AlertDialog
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -24,6 +24,7 @@ class NoteFragment : Fragment(), OnClickItem {
     private lateinit var noteAdapter: NoteAdapter
     private var isGridLayout: Boolean = false
     private lateinit var sharedPreferenceHelper: SharedPreferenceHelper
+    private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +43,7 @@ class NoteFragment : Fragment(), OnClickItem {
         setUpListeners()
         getData()
         updateLayoutButtonIcon()
+        setupDrawer()
     }
 
     private fun initialize() {
@@ -86,6 +88,33 @@ class NoteFragment : Fragment(), OnClickItem {
     private fun getData() {
         App().getInstance()?.noteDao()?.getAll()?.observe(viewLifecycleOwner) {
             noteAdapter.submitList(it)
+        }
+    }
+
+    private fun setupDrawer() {
+        val drawerLayout = binding.drawerLayout
+        val navView = binding.navView
+        toggle = ActionBarDrawerToggle(
+            activity,
+            drawerLayout,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        binding.menu.setOnClickListener {
+            drawerLayout.openDrawer(navView)
+        }
+
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> {
+                    findNavController().navigate(R.id.chatFragment)
+                }
+            }
+            drawerLayout.closeDrawer(navView)
+            true
         }
     }
 

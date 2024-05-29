@@ -48,7 +48,6 @@ class SingUpFragment : Fragment() {
     ): View {
         binding = FragmentSingUpBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
-        sharedPreferenceHelper = SharedPreferenceHelper(requireContext())
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.id_client_token))
@@ -56,21 +55,15 @@ class SingUpFragment : Fragment() {
             .build()
 
         googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPreferenceHelper = SharedPreferenceHelper(requireContext())
 
-        val isOnBoardShown = sharedPreferenceHelper.isOnBoardingComplete()
-        val currentUser = auth.currentUser
-
-        if (!isOnBoardShown) {
-            findNavController().navigate(R.id.singUpFragment)
-            sharedPreferenceHelper.setOnBoardingComplete(true)
-        } else if (currentUser != null || sharedPreferenceHelper.isSignInComplete()) {
-            updateUi(currentUser)
+        if (sharedPreferenceHelper.isRegistrationCompleted()) {
+            findNavController().navigate(R.id.noteFragment)
         } else {
             setUpListener()
         }
@@ -91,7 +84,6 @@ class SingUpFragment : Fragment() {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential).addOnCompleteListener(requireActivity()) { task ->
             if (task.isSuccessful) {
-                sharedPreferenceHelper.setSignInComplete(true)
                 val user = auth.currentUser
                 updateUi(user)
             } else {
@@ -102,6 +94,7 @@ class SingUpFragment : Fragment() {
 
     private fun updateUi(user: FirebaseUser?) {
         if (user != null) {
+            sharedPreferenceHelper.setRegistrationCompleted(true)
             findNavController().navigate(R.id.noteFragment)
         } else {
             Toast.makeText(requireContext(), "Аутентификация не удалась", Toast.LENGTH_LONG).show()

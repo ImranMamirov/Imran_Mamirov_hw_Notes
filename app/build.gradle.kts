@@ -63,7 +63,7 @@ dependencies {
 
     // Lottie
     val lottieVersion = "6.4.0"
-    implementation ("com.airbnb.android:lottie:$lottieVersion")
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 
     // Room
     val roomVersion = "2.6.1"
@@ -78,4 +78,6 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.android.gms:play-services-auth:21.1.1")
 
+    //Firestore
+    implementation("com.google.firebase:firebase-firestore")
 }

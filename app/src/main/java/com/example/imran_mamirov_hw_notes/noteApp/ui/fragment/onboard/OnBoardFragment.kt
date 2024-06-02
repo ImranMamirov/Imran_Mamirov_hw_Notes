@@ -4,17 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.example.imran_mamirov_hw_notes.noteApp.ui.adapter.OnBoardViewPagerAdapter
 import com.example.imran_mamirov_hw_notes.R
 import com.example.imran_mamirov_hw_notes.databinding.FragmentOnBoardBinding
-import com.example.imran_mamirov_hw_notes.noteApp.utils.SharedPreferenceHelper
+import com.example.imran_mamirov_hw_notes.noteApp.ui.adapter.OnBoardViewPagerAdapter
 
 class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
-    private lateinit var sharedPreferenceHelper: SharedPreferenceHelper
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,12 +25,6 @@ class OnBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setUpListener()
-
-//        if (!sharedPreferenceHelper.isOnBoardingComplete()) {
-//            sharedPreferenceHelper.setOnBoardingComplete(true)
-//        } else {
-//            findNavController().navigate(R.id.singUpFragment)
-//        }
     }
 
     private fun initialize() {

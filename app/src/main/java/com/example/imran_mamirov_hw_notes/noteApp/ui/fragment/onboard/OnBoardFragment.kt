@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.imran_mamirov_hw_notes.R
 import com.example.imran_mamirov_hw_notes.databinding.FragmentOnBoardBinding
 import com.example.imran_mamirov_hw_notes.noteApp.ui.adapter.OnBoardViewPagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 
 class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
@@ -25,6 +26,7 @@ class OnBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setUpListener()
+        tabLayout()
     }
 
     private fun initialize() {
@@ -57,5 +59,10 @@ class OnBoardFragment : Fragment() {
         binding.tvStart.setOnClickListener {
             findNavController().navigate(R.id.action_onBoardFragment_to_singUpFragment)
         }
+    }
+
+    private fun tabLayout() {
+        TabLayoutMediator(binding.tabLayout, binding.viewPager2){ _, _ ->
+        }.attach()
     }
 }

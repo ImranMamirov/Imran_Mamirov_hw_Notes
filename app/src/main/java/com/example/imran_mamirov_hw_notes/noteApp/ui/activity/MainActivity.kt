@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.imran_mamirov_hw_notes.R
 import com.example.imran_mamirov_hw_notes.databinding.ActivityMainBinding
 import com.example.imran_mamirov_hw_notes.noteApp.service.MyFirebaseMessagingService.Companion.PERMISSION_REQUEST_CODE

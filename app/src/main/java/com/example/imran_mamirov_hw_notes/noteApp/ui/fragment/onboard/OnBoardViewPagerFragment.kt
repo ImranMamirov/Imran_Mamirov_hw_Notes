@@ -34,15 +34,15 @@ class OnBoardViewPagerFragment : Fragment() {
             1 -> {
                 tvOn.text = "Быстрый, качественный продукт"
                 lottie.setAnimation(R.raw.lottie2)
-                point1.setImageResource(R.drawable.gray_point)
-                point2.setImageResource(R.drawable.orange_point)
+//                point1.setImageResource(R.drawable.gray_point)
+//                point2.setImageResource(R.drawable.orange_point)
             }
             2 -> {
                 tvOn.text = "Куча функций и интересных фишек"
                 lottie.setAnimation(R.raw.lottie3)
-                point1.setImageResource(R.drawable.gray_point)
-                point2.setImageResource(R.drawable.gray_point)
-                point3.setImageResource(R.drawable.orange_point)
+//                point1.setImageResource(R.drawable.gray_point)
+//                point2.setImageResource(R.drawable.gray_point)
+//                point3.setImageResource(R.drawable.orange_point)
             }
         }
     }
